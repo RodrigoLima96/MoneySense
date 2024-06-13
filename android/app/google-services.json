@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "683308649139",
+    "project_id": "money-sense-1fa78",
+    "storage_bucket": "money-sense-1fa78.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:683308649139:android:87ac221b70781aeb6abec6",
+        "android_client_info": {
+          "package_name": "com.example.money_sense"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "683308649139-7b76u671bcm1gr8mmb9rro1h4ebijh42.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDbeXaWu1MJoaooZntWuRoy1pMnvE5VkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "683308649139-7b76u671bcm1gr8mmb9rro1h4ebijh42.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
