@@ -44,3 +44,10 @@ app.*.map.json
 
 # Dev
 /BDD/todo.feature
+/lib/firebase_options.dart
+
+
+# firebase configs
+/android/app/google-services.json
+/ios/firebase_app_id_file.json
+/ios/Runner/GoogleService-Info.plist
