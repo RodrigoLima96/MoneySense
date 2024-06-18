@@ -23,10 +23,15 @@ class AuthRepositoryImpl implements IAuthRepository {
       ),
     );
     user.fold(
-      (failure) {},
+      (failure) {
+        return left(Failure(failure.message));
+      },
       (user) async {
         await remoteDataSource.createUserOnDatabase(
-            id: user.id, email: user.email, name: user.name);
+          id: user.id,
+          email: user.email,
+          name: user.name,
+        );
       },
     );
 
