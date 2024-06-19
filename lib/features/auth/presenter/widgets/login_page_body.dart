@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/core.dart';
-import '../widgets.dart';
+import '../../../../core/core.dart';
+import 'widgets.dart';
 
 class LoginPageBody extends StatelessWidget {
   const LoginPageBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 70),
-      child: Column(
-        children: [
-          const PageTitleWidget(title: 'Sign in'),
-          const SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+    return Column(
+      children: [
+        const PageTitleWidget(title: 'Sign in'),
+        const SizedBox(height: 30),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: SingleChildScrollView(
             child: Form(
               child: Column(
                 children: [
@@ -46,11 +45,11 @@ class LoginPageBody extends StatelessWidget {
               ),
             ),
           ),
-          const Spacer(),
-          GoogleWidget(press: () {}),
-          const SizedBox(height: 30),
-        ],
-      ),
+        ),
+        const Spacer(),
+        GoogleWidget(press: () {}, welcomePage: false),
+        const SizedBox(height: 30),
+      ],
     );
   }
 }
