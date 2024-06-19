@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../core/core.dart';
-import '../pages/pages.dart';
 import 'widgets.dart';
 
 class WelcomePageBody extends StatelessWidget {
@@ -39,21 +39,13 @@ class WelcomePageBody extends StatelessWidget {
                     RoundedButton(
                         text: 'Sign in',
                         press: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const LoginPage(),
-                            ),
-                          );
+                          Modular.to.pushNamed('/auth/login');
                         }),
                     const SizedBox(height: 30),
                     RoundedButton(
                         text: 'Create an account',
                         press: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const SignUpPage(),
-                            ),
-                          );
+                          Modular.to.pushNamed('/auth/register');
                         }),
                     const SizedBox(height: 30),
                     GoogleWidget(press: () {}, welcomePage: true),
