@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../../core/core.dart';
-import 'welcome.dart';
+import '../widgets.dart';
 
 class WelcomePageBody extends StatelessWidget {
   const WelcomePageBody({super.key});
@@ -14,19 +14,12 @@ class WelcomePageBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text(
-            'Money Sense',
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: AppPallete.whiteColor,
-            ),
-          ),
+          const PageTitleWidget(title: 'Money Sense'),
           const SizedBox(height: 30),
           Lottie.asset(
             'assets/animations/welcome_animation.json',
             width: double.infinity,
-            height: 250,
+            height: 200,
           ),
           const Spacer(),
           ClipRRect(
@@ -37,13 +30,13 @@ class WelcomePageBody extends StatelessWidget {
             child: Container(
               width: double.infinity,
               color: const Color(0xFF292929),
-              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
               child: Column(
                 children: [
                   RoundedButton(text: 'Sign in', press: () {}),
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 20),
                   RoundedButton(text: 'Create an account', press: () {}),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 20),
                   GoogleWidget(press: () {}),
                 ],
               ),
