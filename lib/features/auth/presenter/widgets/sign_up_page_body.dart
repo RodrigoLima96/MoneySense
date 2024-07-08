@@ -1,20 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../core/core.dart';
-import 'widgets.dart';
+import '../../../features.dart';
 
-class SignUpPageBody extends StatelessWidget {
+class SignUpPageBody extends StatefulWidget {
   const SignUpPageBody({super.key});
 
   @override
+  State<SignUpPageBody> createState() => _SignUpPageBodyState();
+}
+
+class _SignUpPageBodyState extends State<SignUpPageBody> {
+  final authStore = Modular.get<AuthStore>();
+
+  final formKey = GlobalKey<FormState>();
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const PageTitleWidget(title: 'Register'),
-        const SizedBox(height: 30),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          const PageTitleWidget(title: 'Register'),
+          const SizedBox(height: 30),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Form(
               child: Column(
                 children: [
@@ -41,11 +63,11 @@ class SignUpPageBody extends StatelessWidget {
               ),
             ),
           ),
-        ),
-        const Spacer(),
-        GoogleWidget(press: () {}, welcomePage: false),
-        const SizedBox(height: 30),
-      ],
+          const SizedBox(height: 50),
+          GoogleWidget(press: () {}, welcomePage: false),
+          const SizedBox(height: 30),
+        ],
+      ),
     );
   }
 }

@@ -8,13 +8,13 @@ class LoginPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const PageTitleWidget(title: 'Sign in'),
-        const SizedBox(height: 30),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          const PageTitleWidget(title: 'Sign in'),
+          const SizedBox(height: 30),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Form(
               child: Column(
                 children: [
@@ -45,11 +45,11 @@ class LoginPageBody extends StatelessWidget {
               ),
             ),
           ),
-        ),
-        const Spacer(),
-        GoogleWidget(press: () {}, welcomePage: false),
-        const SizedBox(height: 30),
-      ],
+          const SizedBox(height: 50),
+          GoogleWidget(press: () {}, welcomePage: false),
+          const SizedBox(height: 30),
+        ],
+      ),
     );
   }
 }
