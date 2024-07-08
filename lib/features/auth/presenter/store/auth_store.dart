@@ -14,9 +14,10 @@ enum AuthState { notStarted, loading, failure, success }
 
 abstract class _AuthStoreBase with Store {
   final SignUpUserUsecase signUpUserUsecase;
-  final LoginUserWithGoogleUsecase loginUserWithGoogleUsecase;
   final LoginUserWithEmailAndPasswordUsecase
       loginUserWithEmailAndPasswordUsecase;
+  final LoginUserWithGoogleUsecase loginUserWithGoogleUsecase;
+
   final GetCurrentUserUsecase getCurrentUserUsecase;
   final AppUserStore appUserStore;
 
@@ -27,8 +28,8 @@ abstract class _AuthStoreBase with Store {
 
   _AuthStoreBase({
     required this.signUpUserUsecase,
-    required this.loginUserWithGoogleUsecase,
     required this.loginUserWithEmailAndPasswordUsecase,
+    required this.loginUserWithGoogleUsecase,
     required this.getCurrentUserUsecase,
     required this.appUserStore,
   });
@@ -43,6 +44,25 @@ abstract class _AuthStoreBase with Store {
       () => signUpUserUsecase(
         UserSignUpParams(name: name, email: email, password: password),
       ),
+    );
+  }
+
+  @action
+  Future<void> loginUser({
+    required String email,
+    required String password,
+  }) async {
+    await _performAuthAction(
+      () => loginUserWithEmailAndPasswordUsecase(
+        UserLoginParams(email: email, password: password),
+      ),
+    );
+  }
+
+  @action
+  Future<void> checkCurrentUserLoggedIn() async {
+    await _performAuthAction(
+      () => getCurrentUserUsecase(NoParams()),
     );
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../core/core.dart';
+import 'presenter/pages/initial_page.dart';
 import 'auth.dart';
 
 class AuthModule extends Module {
@@ -37,6 +38,7 @@ class AuthModule extends Module {
 
   @override
   void routes(r) {
+    r.child('/initial/', child: (context) => const InitialPage());
     r.child('/welcome', child: (context) => const WelcomePage());
     r.child('/login/', child: (context) => const LoginPage());
     r.child('/register/', child: (context) => const SignUpPage());

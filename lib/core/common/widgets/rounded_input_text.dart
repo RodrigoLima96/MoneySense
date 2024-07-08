@@ -5,11 +5,17 @@ class RoundedInputText extends StatefulWidget {
   final String inputTitle;
   final String hintText;
   final bool isPassword;
-  const RoundedInputText(
-      {super.key,
-      required this.inputTitle,
-      required this.hintText,
-      required this.isPassword});
+  final bool isEmail;
+  final TextEditingController controller;
+
+  const RoundedInputText({
+    super.key,
+    required this.inputTitle,
+    required this.hintText,
+    required this.isPassword,
+    required this.isEmail,
+    required this.controller,
+  });
 
   @override
   State<RoundedInputText> createState() => _RoundedInputTextState();
@@ -31,9 +37,10 @@ class _RoundedInputTextState extends State<RoundedInputText> {
       children: [
         Text(widget.inputTitle),
         const SizedBox(height: 15),
-        TextField(
+        TextFormField(
           style: const TextStyle(color: AppPallete.whiteColor),
           obscureText: widget.isPassword ? _obscureText : false,
+          controller: widget.controller,
           decoration: InputDecoration(
             filled: true,
             fillColor: AppPallete.primaryColor,
@@ -57,6 +64,22 @@ class _RoundedInputTextState extends State<RoundedInputText> {
                   )
                 : null,
           ),
+          validator: (value) {
+            if (value!.trim().isEmpty) {
+              return widget.hintText;
+            }
+            if (value.trim().length < 6 && widget.isPassword) {
+              return 'Password: min 6 characters';
+            }
+            if (widget.isEmail) {
+              String pattern = r'^[^@]+@[^@]+\.[^@]+';
+              RegExp regex = RegExp(pattern);
+              if (!regex.hasMatch(value)) {
+                return 'Enter a valid email address';
+              }
+            }
+            return null;
+          },
         ),
       ],
     );
